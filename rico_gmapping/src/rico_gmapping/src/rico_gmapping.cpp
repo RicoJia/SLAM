@@ -27,6 +27,9 @@ void fill_in_map(nav_msgs::OccupancyGrid& map)
  * Theory
  *  1. rviz error: Error subscribing: Character [ ] at element [18] is not valid in Graph Resource Name [/rico_gmapping/map ].  Valid characters are a-z, A-Z, 0-9, / and _., this means the map topic name you put into rviz is not correct, maybe have an extra space or something
 */
+// Params:
+// *  - @b "~map_update_interval": @b [double] time in seconds between two recalculations of the map
+
 int main(int argc, char**argv)
 {
     /**

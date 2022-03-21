@@ -4,6 +4,7 @@ add_compile_options(-std=c++14)
 find_package(catkin REQUIRED COMPONENTS 
     roscpp  # need this for everything
     geometry_msgs
+    sensor_msgs
     nav_msgs
     tf2
     message_generation
