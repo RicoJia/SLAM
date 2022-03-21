@@ -1,3 +1,4 @@
 build
 devel
 *.so
+a.out
