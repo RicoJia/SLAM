@@ -24,4 +24,12 @@ add_executable(${PROJECT_NAME} src/${PROJECT_NAME}.cpp)
 target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
+
+# Test node
+add_executable(test_2d_scan_processor tests/test_2d_scan_processor.cpp)
+# Linking executable to packages in find_package
+target_link_libraries(test_2d_scan_processor
+  ${catkin_LIBRARIES}
+)
+
 #  catkin_add_nosetests(test)
