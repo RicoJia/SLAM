@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
     nav_msgs
     tf2
     message_generation
+    pcl_ros
     )
 
 
