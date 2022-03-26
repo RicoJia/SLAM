@@ -16,8 +16,10 @@
   <exec_depend>sensor_msgs</exec_depend>
   <build_depend>geometry_msgs</build_depend>
   <exec_depend>geometry_msgs</exec_depend>
-  <build_depend>tf2</build_depend>
-  <exec_depend>tf2</exec_depend>
+  <build_depend>tf</build_depend>
+  <exec_depend>tf</exec_depend>
+  <build_depend>tf_conversions</build_depend>
+  <exec_depend>tf_conversions</exec_depend>
   <build_depend>pcl_ros</build_depend>
   <exec_depend>pcl_ros</exec_depend>
 

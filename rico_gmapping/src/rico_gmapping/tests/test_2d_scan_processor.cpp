@@ -11,6 +11,7 @@
 using std::cout; using std::endl; 
 
 std::vector<Eigen::Vector2d> last_scan; 
+tf::Transform transform; 
 
 void build_valid_scan_vec(const sensor_msgs::LaserScan::ConstPtr& msg, std::vector<Eigen::Vector2d>& scan){
     double angle = 0.0; 
@@ -27,7 +28,7 @@ void map_scan_cb(const sensor_msgs::LaserScan::ConstPtr& msg)
     build_valid_scan_vec(msg, last_scan); 
 }
 
-void base_link_scan_cb(const sensor_msgs::LaserScan::ConstPtr& msg)
+void base_scan_cb(const sensor_msgs::LaserScan::ConstPtr& msg)
 {
     Eigen::Affine3d t_map_base_scan; 
     if (!last_scan.empty()){ 
@@ -39,21 +40,34 @@ void base_link_scan_cb(const sensor_msgs::LaserScan::ConstPtr& msg)
         t_map_base_scan = icp_svd(last_scan, current_scan, 5);
     }
 
-    // publish tf 
-    static tf::TransformBroadcaster br; 
-    tf::Transform transform; 
     tf::transformEigenToTF(t_map_base_scan, transform); 
-    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "map", "base_scan"));
-    ROS_INFO_STREAM("Published TF map->base_scan"); 
 }
 
+/**
+* @ Show laser scans in tf properly
+*  - Even though you want to "statically publish" a tf, you still need to periodically publish it.
+*  - DO NOT select "unreliable" in laser scans
+*/
 int main(int argc, char**argv){
     auto node_name = "test_2d_scan_processor";
     ros::init(argc, argv, node_name); 
     ros::NodeHandle nh("~"); 
     ROS_INFO_STREAM("Started "<<node_name); 
 
+    tf::Quaternion q; 
+    q.setRPY(0, 0, 0);
+    transform.setRotation(q);
+    // publish tf 
+    tf::TransformBroadcaster br; 
+
     auto map_scan_sub = nh.subscribe<sensor_msgs::LaserScan>("/map_scan", 1, map_scan_cb); 
-    auto base_scan_sub = nh.subscribe<sensor_msgs::LaserScan>("/base_link_scan", 1, base_link_scan_cb); 
-    ros::spin(); 
+    auto base_scan_sub = nh.subscribe<sensor_msgs::LaserScan>("/base_scan", 1, base_scan_cb); 
+
+    ros::Rate r(1);
+    while(ros::ok()){
+        br.sendTransform(tf::StampedTransform(transform, ros::Time::now() + ros::Duration(100), "/map", "/base_scan"));
+        ROS_INFO_STREAM("Published TF map->base_scan"); 
+        ros::spinOnce();
+        r.sleep();
+    }
 }

@@ -50,11 +50,6 @@ Eigen::Affine3d icp_svd(const std::vector<Eigen::Vector2d>& last_scan, const std
             std::vector<float> squared_dist(1);
             kd_tree->nearestKSearch({s[0], s[1]}, k, index, squared_dist);
             matched_last_scan.emplace_back(last_scan.at(index[0]));
-
-            /* TODO:  <24-03-22, yourname> */
-            cout<<"======="<<endl;
-            cout<<last_scan.at(index[0])<<endl;
-            cout<<s<<endl;
         }
         
         // Get miu
@@ -82,7 +77,12 @@ Eigen::Affine3d icp_svd(const std::vector<Eigen::Vector2d>& last_scan, const std
 
     Eigen::Affine3d transform = Eigen::Affine3d::Identity();
     transform.translation() = Eigen::Vector3d(t[0], t[1], 0.0);
+    for (unsigned int i = 0; i < 2; ++i) {
+       R.col(i).normalize(); 
+    }
     transform.linear().block<2,2>(0,0) = R; 
+
+    cout<<transform.matrix()<<endl;
     
     return transform;
 }
