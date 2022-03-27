@@ -22,6 +22,8 @@
 ========================================================================
 1. icp - svd 
     - update points
+    - try with more data points
+    - advantages, disadvantages
 
 2. icp -GN
 
