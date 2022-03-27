@@ -65,7 +65,7 @@ int main(int argc, char**argv){
 
     ros::Rate r(1);
     while(ros::ok()){
-        br.sendTransform(tf::StampedTransform(transform, ros::Time::now() + ros::Duration(100), "/map", "/base_scan"));
+        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "/map", "/base_scan"));
         ROS_INFO_STREAM("Published TF map->base_scan"); 
         ros::spinOnce();
         r.sleep();
