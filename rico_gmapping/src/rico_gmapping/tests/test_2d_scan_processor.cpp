@@ -5,6 +5,7 @@
 #include <sensor_msgs/LaserScan.h>
 #include "rico_gmapping/rico_gmapping.hpp"
 #include "rico_gmapping/icp_svd.hpp"
+#include "rico_gmapping/icp_gn.hpp"
 #include <vector>
 #include <iostream>
 #include <cmath>
