@@ -22,7 +22,20 @@
 */
 Eigen::Affine3d icp_gn(const std::vector<Eigen::Vector2d>& last_scan, const std::vector<Eigen::Vector2d>&current_scan, Eigen::Affine3d initial_guess=Eigen::Affine3d::Identity(), unsigned int num_iterations = 3)
 {
-    
+   // Build KD Tree 
+   // Match current points to the closest point in the KD Tree
+    pcl::PointCloud<pcl::PointXY>::Ptr cloud (new pcl::PointCloud<pcl::PointXY>);
+    for (const auto& s : last_scan){ 
+    cloud->push_back({s[0], s[1]}); 
+    }
+    pcl::KdTreeFLANN<pcl::PointXY>* kd_tree = new pcl::KdTreeFLANN<pcl::PointXY>(); 
+    kd_tree -> setInputCloud(cloud);
+    auto current_scan_cp = current_scan; 
+
+    Eigen::Matrix2d R = Eigen::Matrix2d::Identity();
+    Eigen::Vector2d t = Eigen::Vector2d::Zero();
+    for (unsigned int j = 0; j < num_iterations; ++j) {}
+
 }
 
 
