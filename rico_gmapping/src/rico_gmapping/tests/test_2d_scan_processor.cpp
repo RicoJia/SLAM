@@ -38,7 +38,9 @@ void base_scan_cb(const sensor_msgs::LaserScan::ConstPtr& msg)
         std::vector<Eigen::Vector2d> current_scan; 
         build_valid_scan_vec(msg, current_scan); 
 
-        t_map_base_scan = icp_svd(last_scan, current_scan, 5);
+        // t_map_base_scan = icp_svd(last_scan, current_scan, 5);
+        // TODO
+        t_map_base_scan = icp_gn(last_scan, current_scan, 2000); 
     }
 
     tf::transformEigenToTF(t_map_base_scan, transform); 
