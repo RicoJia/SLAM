@@ -1,5 +1,4 @@
 # rico_gmapping
-https://shields.io/category/analysis
 ## Introduction
 1. Description
     - Motivation: this is a custom gmapping package based on [ROS 2D SLAM gmapping](https://github.com/ros-perception/slam_gmapping)
