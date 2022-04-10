@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <launch>
     <!-- node name cannot have .py -->
-    <arg name="test" default="false" doc="launch rviz and test_2d_scan"/>
+    <arg name="test_2d_scan" default="false" doc="launch rviz and test_2d_scan"/>
     <!-- launch with roslaunch rico_gmapping rico_gmapping.launch test:=true -->
-    <group if="$(arg test)">
+    <group if="$(arg test_2d_scan)">
         <node name="test_2d_scan_sensor" type="test_2d_scan.py" pkg="rico_gmapping" output="screen"></node>
         <node name="test_2d_scan_processor" type="test_2d_scan_processor" pkg="rico_gmapping" output="screen"></node>
         <node pkg="rviz" type="rviz" name="rviz" required="true" args="$(find rico_gmapping)/rviz/test_laser_scan.rviz"/>
