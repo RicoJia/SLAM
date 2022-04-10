@@ -34,12 +34,14 @@ Eigen::Affine3d icp_gn(const std::vector<Eigen::Vector2d>& last_scan, const std:
     kd_tree -> setInputCloud(cloud);
     auto current_scan_updated = current_scan; 
 
-    Eigen::Matrix2d R = Eigen::Matrix2d::Identity();
-    Eigen::Vector2d t = Eigen::Vector2d::Zero();
+    Eigen::Matrix2d R = initial_guess.matrix().block(0,0,2,2);
+    Eigen::Vector2d t = initial_guess.matrix().block(0,3,2,1);
     for (unsigned int j = 0; j < num_iterations; ++j){
         // Find matched points
         std::vector<Eigen::Vector2d> matched_last_scan;
         matched_last_scan.reserve(last_scan.size());
+        // square mean error
+        double rmse = 0; 
         for (unsigned int i = 0; i < current_scan.size(); ++i){
             auto& s = current_scan_updated.at(i); 
             s = R * current_scan.at(i) + t; 
@@ -50,7 +52,9 @@ Eigen::Affine3d icp_gn(const std::vector<Eigen::Vector2d>& last_scan, const std:
             std::vector<float> squared_dist(1);
             kd_tree->nearestKSearch({s[0], s[1]}, k, index, squared_dist);
             matched_last_scan.emplace_back(last_scan.at(index[0]));
+            rmse += (last_scan.at(index[0]) - s).norm(); 
         }
+        std::cout<<__FUNCTION__<<": rmse: "<<rmse<<std::endl;
 
         Eigen::Matrix<double, 6, 6> H_sum = Eigen::Matrix<double, 6, 6>::Zero();  
         Eigen::Matrix<double, 6, 1> b_sum = Eigen::Matrix<double, 6, 1>::Zero();  
@@ -82,10 +86,12 @@ Eigen::Affine3d icp_gn(const std::vector<Eigen::Vector2d>& last_scan, const std:
             std::cout<<__FUNCTION__<<"H sum is not full rank. Aborted"<<std::endl;
             break;
         }
-        Eigen::Matrix<double,6,1> epsilon = H_sum.inverse() * b_sum; 
+        // Cholesky solver, an alternative to b_sum
+        // Eigen::Matrix<double,6,1> epsilon = H_sum.inverse() * b_sum; 
+        Eigen::Matrix<double,6,1> epsilon = H_sum.ldlt().solve(b_sum); 
         // update R, t
         t += epsilon.block<2,1>(0,0); 
-        auto delta_R = Sophus::SO2<double>::exp(epsilon(5)); 
+        auto delta_R = Sophus::SO2d::exp(epsilon(5)); 
         R = R * delta_R.matrix(); // right disturbance
     }
 

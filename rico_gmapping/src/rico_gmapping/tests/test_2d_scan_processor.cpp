@@ -6,6 +6,8 @@
 #include "rico_gmapping/rico_gmapping.hpp"
 #include "rico_gmapping/icp_svd.hpp"
 #include "rico_gmapping/icp_gn.hpp"
+#include "rico_gmapping/icp_pcl.hpp"
+#include "rico_gmapping/ndt_pcl.hpp"
 #include <vector>
 #include <iostream>
 #include <cmath>
@@ -38,9 +40,12 @@ void base_scan_cb(const sensor_msgs::LaserScan::ConstPtr& msg)
         std::vector<Eigen::Vector2d> current_scan; 
         build_valid_scan_vec(msg, current_scan); 
 
+        // // svd & gn 
         // t_map_base_scan = icp_svd(last_scan, current_scan, 5);
-        // TODO
-        t_map_base_scan = icp_gn(last_scan, current_scan, 2000); 
+        // t_map_base_scan = icp_gn(last_scan, current_scan, 20, t_map_base_scan); 
+        // t_map_base_scan = icp_gn(last_scan, current_scan, 20); 
+        t_map_base_scan = ndt_pcl(last_scan, current_scan); 
+        // t_map_base_scan = icp_pcl(last_scan, current_scan); 
     }
 
     tf::transformEigenToTF(t_map_base_scan, transform); 
