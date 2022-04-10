@@ -7,9 +7,5 @@
         1. Multi-Sensor-Fusion - (Mandarin) helpful slides about multi-sensor fusion for mobile robots
         2. Reading_materials - Other miscellaneous reading materials 
         3. rico_gmapping - custom gmapping package based on [ROS 2D SLAM gmapping](https://github.com/ros-perception/slam_gmapping)
-
-## Usage
-1. Build and Run 
-
-2. Licence: GNU General Public License v3.0
-    
+    - Reference: 
+        1. A minimal example of 2D robot navigation. [see code](https://github.com/RicoJia/3D_Motion_Planning-/tree/master/2d_planning_playground/src/costmap_plugins)
