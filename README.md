@@ -1,6 +1,5 @@
 # Rico's SLAM Projects
-![GitHub all releases](https://img.shields.io/github/downloads/ricojia/SLAM/total)
-
+![GitHub all releases](https://img.shields.io/github/downloads/ricojia/SLAM/total) ![GitHub](https://img.shields.io/github/license/ricojia/SLAM?color=green)
 ## Introduction
 1. Description
     - Motivation
