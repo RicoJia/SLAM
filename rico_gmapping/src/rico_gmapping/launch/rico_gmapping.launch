@@ -8,4 +8,10 @@
         <node name="test_2d_scan_processor" type="test_2d_scan_processor" pkg="rico_gmapping" output="screen"></node>
         <node pkg="rviz" type="rviz" name="rviz" required="true" args="$(find rico_gmapping)/rviz/test_laser_scan.rviz"/>
     </group>
+
+    <arg name="test_with_gazebo" default="false" doc="launch gmapping with gazebo environment"/>
+    <group if="$(arg test_with_gazebo)">
+
+    </group>
+
 </launch>

@@ -18,4 +18,7 @@
     source devel/setup.bash
     # 1. Run 2d scan test to see the ICP/PCL scan matching implementations
     roslaunch rico_gmapping rico_gmapping.launch test_2d_scan:=True
+
+    # 2. launch gmapping with gazebo environment
+    roslaunch rico_gmapping rico_gmapping.launch test_with_gazebo:=True
     ```
