@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 """
 Theory: 
     - Shbang is a MUST, must use python like above

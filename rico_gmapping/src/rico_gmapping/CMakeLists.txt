@@ -4,6 +4,7 @@ add_compile_options(-std=c++14)
 find_package(Sophus REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(fmt REQUIRED)
+find_package(OpenCV REQUIRED)
 find_package(catkin REQUIRED COMPONENTS 
     roscpp  # need this for everything
     geometry_msgs
@@ -41,6 +42,7 @@ add_executable(test_2d_scan_processor tests/test_2d_scan_processor.cpp)
 target_link_libraries(test_2d_scan_processor
   ${catkin_LIBRARIES}
   ${Sophus_LIBRARIES}
+  ${OpenCV_LIBS}
   # must have the libfmt
   fmt
 )
