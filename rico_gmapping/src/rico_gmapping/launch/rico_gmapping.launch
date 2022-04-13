@@ -16,12 +16,9 @@
         <arg name="y_pos" value="1"/>
         <arg name="z_pos" value="0"/>
       </include>
-
-      <include file="$(find rico_gmapping)/launch/amcl.launch">
-        <arg name="initial_pose_x" value="-3"/>
-        <arg name="initial_pose_y" value="1"/>
-        <arg name="initial_pose_a" value="0"/>
-      </include>
+      <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping">
+         <param name="scan" value="base_scan"/>
+      </node>
 
       <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
       <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
@@ -32,8 +29,8 @@
             args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
 
         <!-- Run the map server -->
-        <arg name="map_file" default="$(find rico_gmapping)/maps/house.yaml"/>
-      <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+      <!--   <arg name="map_file" default="$(find rico_gmapping)/maps/house.yaml"/> -->
+      <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/> -->
     </group>
 
 </launch>
