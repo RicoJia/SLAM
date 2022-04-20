@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net" modified="2022-04-19T18:34:57.876Z" agent="5.0 (X11)" etag="12ggCHpIx-WOdYQl7qea" version="17.4.1" type="github">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="1422" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="VuXL2oXtJRaB68Xe9MYe-0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="180" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-0" value="LaserCallback " style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="120" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="VuXL2oXtJRaB68Xe9MYe-5" target="VuXL2oXtJRaB68Xe9MYe-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-5" value="Add Scan" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="90" y="320" width="180" height="130" as="geometry">
+            <mxRectangle x="120" y="320" width="80" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-6" value="Store each laser scan value&#xa;into an array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-5">
+          <mxGeometry y="26" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-7" value="Invert the scan if necessary. " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-5">
+          <mxGeometry y="70" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-8" value="Gmapping::processScan" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-5">
+          <mxGeometry y="100" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-29" value="processScan" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="340" y="320" width="436" height="152" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-30" value="odometry prediction, using motion model &#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-29">
+          <mxGeometry y="26" width="436" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-31" value="proposal distribution from the most recent scan matching results. &#xa;&#xa;(select window and get the corresponding particles?])&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-29">
+          <mxGeometry y="52" width="436" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-32" value="update weights on each particle" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-29">
+          <mxGeometry y="100" width="436" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-33" value="resample&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-29">
+          <mxGeometry y="126" width="436" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="VuXL2oXtJRaB68Xe9MYe-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="VuXL2oXtJRaB68Xe9MYe-37" target="VuXL2oXtJRaB68Xe9MYe-39">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-37" value="update tf::transform(map-&amp;gt;odom)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="100" y="510" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-39" value="updateMap" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="90" y="620" width="180" height="130" as="geometry">
+            <mxRectangle x="120" y="320" width="80" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-40" value="Create scan matcher with &#xa;map parameters&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-39">
+          <mxGeometry y="26" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-41" value="Invert the scan if necessary. " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-39">
+          <mxGeometry y="70" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-42" value="Gmapping::processScan" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-39">
+          <mxGeometry y="100" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-44" value="processScan" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="340" y="620" width="436" height="152" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-45" value="odometry prediction, using motion model &#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-44">
+          <mxGeometry y="26" width="436" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-46" value="proposal distribution from the most recent scan matching results. &#xa;&#xa;(select window and get the corresponding particles?])&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-44">
+          <mxGeometry y="52" width="436" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-47" value="update weights on each particle" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-44">
+          <mxGeometry y="100" width="436" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="VuXL2oXtJRaB68Xe9MYe-48" value="resample&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="VuXL2oXtJRaB68Xe9MYe-44">
+          <mxGeometry y="126" width="436" height="26" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
